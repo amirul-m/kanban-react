@@ -6,26 +6,45 @@ export function uniqueId(){
   return _id++
 }
 
-export function createTask({title, description}){
+export function createTaskSucceeded(task){
   return {
-    type: 'CREATE_TASK',
+    type: 'CREATE_TASK_SUCCEEDED',
     payload: {
-      id: uniqueId(),
-      title,
-      description,
-      status: 'Backlog'
+      task
+    }
+  }
+}
+
+export function createTask({title, description, status='Backlog'}){
+  return dispatch => {
+    api.createTask({title, description, status}).then(resp => {
+      dispatch(createTaskSucceeded(resp.data))
+    })
+  }
+}
+
+export function editStatusTaskSucceeded(task){
+  return {
+    type: 'EDIT_STATUS_TASK_SUCCEEDED',
+    payload: {
+      task
     }
   }
 }
 
 export function editStatusTask(id, params={}){
-  return {
-    type: 'EDIT_STATUS_TASK',
-    payload: {
-      id,
-      params
-    }
+  return (dispatch, getState) => {
+    const task = getTaskById(getState().tasks, id)
+    const updatedTask = Object.assign({}, task, params)
+
+    api.editStatusTask(id, updatedTask).then(resp => {
+      dispatch(editStatusTaskSucceeded(resp.data))
+    })
   }
+}
+
+export function getTaskById(tasks, id){
+  return tasks.find(task => task.id === id)
 }
 
 export function fetchTasksSucceeded(tasks){
