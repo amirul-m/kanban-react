@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {connect} from 'react-redux'
+import {createTask, editStatusTask, fetchTasks} from './actions'
+import TaskPage from './components/TasksPage'
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchTasks())
+  }
+  
+
+  onCreateTask = ({title, description}) => {
+    this.props.dispatch(createTask({title, description}))
+  }
+
+  onStatusChange = (id, status) => {
+    this.props.dispatch(editStatusTask(id, {status}))
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="main-content">
+        <TaskPage
+          tasks={this.props.tasks}
+          onCreateTask={this.onCreateTask}
+          onStatusChange={this.onStatusChange}
+        />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  return {
+    tasks: state.tasks
+  }
+}
+
+export default connect(mapStateToProps) (App);
