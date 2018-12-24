@@ -15,9 +15,9 @@ export function createTaskSucceeded(task){
   }
 }
 
-export function createTask({title, description, status='Backlog'}){
+export function createTask({title, description, assignedTo, status='Backlog'}){
   return dispatch => {
-    api.createTask({title, description, status}).then(resp => {
+    api.createTask({title, description, assignedTo, status}).then(resp => {
       dispatch(createTaskSucceeded(resp.data))
     })
   }

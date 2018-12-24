@@ -10,8 +10,8 @@ class App extends Component {
   }
   
 
-  onCreateTask = ({title, description}) => {
-    this.props.dispatch(createTask({title, description}))
+  onCreateTask = ({title, description, assignedTo}) => {
+    this.props.dispatch(createTask({title, description, assignedTo}))
   }
 
   onStatusChange = (id, status) => {

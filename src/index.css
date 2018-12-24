@@ -103,3 +103,7 @@ hr {
 .task-list-title {
   margin-bottom: 10px;
 }
+
+.task-list-header {
+  padding-bottom: 10px;
+}

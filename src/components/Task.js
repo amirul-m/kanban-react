@@ -1,5 +1,4 @@
 import React from 'react';
-// import TASK_STATUSES from './TasksPage'
 
 const TASK_STATUSES = ['Backlog', 'To Do', 'In Progress', 'Done']
 
@@ -8,18 +7,26 @@ const Task = (props) => {
     <div className="task">
       <div className="task-header">
         <div>{props.task.title}</div>
-        <select value={props.task.status} onChange={onStatusChange}>
-          {TASK_STATUSES.map(status => (
-            <option key={status} value={status}>
-              {status}
-            </option>
-          ))}
-        </select>
+          <select value={props.task.status} onChange={onStatusChange}>
+            {TASK_STATUSES.map(status => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}
+          </select>
       </div>
       <hr/>
       <div className="task-body">
-        {props.task.description}
+        <div className="task-content">
+          Description:
+          <br/>
+          {props.task.description}
+        </div>
+        <div className="task-content">
+          Assigned to: {props.task.assignedTo}
+        </div>
       </div>
+
     </div>
   );
 

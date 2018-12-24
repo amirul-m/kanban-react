@@ -4,37 +4,29 @@
       "id": 1,
       "title": "Title 1",
       "description": "Desc 1",
-      "status": "Backlog"
+      "status": "Backlog",
+      "assignedTo": "Me"
     },
     {
       "id": 2,
       "title": "Title 2",
       "description": "Desc 2",
-      "status": "To Do"
+      "status": "To Do",
+      "assignedTo": "Amir"
     },
     {
       "id": 3,
       "title": "Title 3",
       "description": "Desc 3",
-      "status": "In Progress"
+      "status": "In Progress",
+      "assignedTo": "Irul"
     },
     {
       "id": 4,
       "title": "Title 4",
       "description": "Desc 4",
-      "status": "Done"
-    },
-    {
-      "title": "da",
-      "description": "da",
-      "status": "To Do",
-      "id": 5
-    },
-    {
-      "title": "da",
-      "description": "da",
-      "status": "Backlog",
-      "id": 6
+      "status": "Done",
+      "assignedTo": "You"
     }
   ]
 }

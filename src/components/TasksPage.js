@@ -9,7 +9,8 @@ class TasksPage extends Component {
     this.state = {
       showNewCardForm: false,
       title: '',
-      description: ''
+      description: '',
+      assignedTo: ''
     }
   }
 
@@ -21,11 +22,16 @@ class TasksPage extends Component {
     this.setState({description: e.target.value});
   }
 
+  onAssignedToChange = (e) => {
+    this.setState({assignedTo: e.target.value});
+  }
+
   resetForm(){
     this.setState({
       showNewCardForm: false,
       title: '',
-      description: ''
+      description: '',
+      assignedTo: ''
     });
   }
 
@@ -33,7 +39,8 @@ class TasksPage extends Component {
     e.preventDefault()
     this.props.onCreateTask({
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      assignedTo: this.state.assignedTo
     })
     this.resetForm()
   }
@@ -79,6 +86,13 @@ class TasksPage extends Component {
               value={this.state.description}
               type="text"
               placeholder="description"
+            />
+            <input
+              className="full-width-input"
+              onChange={this.onAssignedToChange}
+              value={this.state.assignedTo}
+              type="text"
+              placeholder="assigned to"
             />
             <button className="button" type="submit">
               Save
