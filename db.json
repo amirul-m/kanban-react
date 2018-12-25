@@ -23,18 +23,6 @@
       "title": "Title 4",
       "description": "Desc 4",
       "status": "Done"
-    },
-    {
-      "title": "da",
-      "description": "da",
-      "status": "To Do",
-      "id": 5
-    },
-    {
-      "title": "da",
-      "description": "da",
-      "status": "Backlog",
-      "id": 6
     }
   ]
 }
