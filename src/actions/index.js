@@ -1,10 +1,4 @@
-import axios from 'axios'
 import * as api from '../api'
-
-let _id = 1
-export function uniqueId(){
-  return _id++
-}
 
 export function createTaskSucceeded(task){
   return {
